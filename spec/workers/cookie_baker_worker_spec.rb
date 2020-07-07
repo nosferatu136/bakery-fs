@@ -40,10 +40,10 @@ describe CookieBakerWorker do
   describe 'perform_async' do
     let(:some_cookie_id) { 123 }
 
-    it 'enqeues job properly' do
+    it 'enqueues job properly' do
       subject.perform_async(some_cookie_id)
 
       expect(subject).to have_enqueued_sidekiq_job(some_cookie_id)
     end
-end
+  end
 end

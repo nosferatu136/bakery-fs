@@ -4,8 +4,6 @@ class CookieBakerWorker
 
   def perform(cookie_id)
     cookie = Cookie.find_by(id: cookie_id)
-    if cookie && !cookie.ready?
-      cookie.update_attributes!(ready: true)
-    end
+    cookie.update_attributes!(ready: true) if cookie && !cookie.ready?
   end
 end
