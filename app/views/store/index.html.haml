@@ -8,9 +8,9 @@
 .store-inventory
   Cookies for sale:
   %ul
-    - current_user.stored_cookies.group_by(&:fillings).each_pair do |fillings, cookies|
+    - current_user.cookies_by_fillings.each_pair do |fillings, cookies|
       %li
         = pluralize(cookies.count, "Cookie")
         with
         = fillings || "no filling"
-    
+
