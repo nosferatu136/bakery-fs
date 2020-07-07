@@ -4,8 +4,7 @@
   Cookie in oven:
 -if @oven.cookies_by_fillings.present?
   - @oven.cookies_by_fillings.each_pair do |fillings, cookies|
-    - cookies_string = pluralize(cookies.count, "Cookie")
-    #{cookies.size} #{cookies_string} with #{fillings || "no fillings"}
+    #{pluralize(cookies.count, "Cookie")} with #{fillings || "no fillings"}
   - if @oven.cookies_ready?
     (Your Cookie is Ready)
     = button_to "Retrieve Cookie", empty_oven_path, class: 'button tiny'
@@ -14,4 +13,4 @@
 
 %br
 
-= link_to "Prepare Cookie", new_oven_cookies_path(@oven), class: 'button'
+= link_to "Prepare Cookies", new_oven_cookies_path(@oven), class: 'button'

@@ -7,7 +7,7 @@ class Oven < ActiveRecord::Base
   validates :user, presence: true
 
   def cookies_ready?
-    cookie_status = cookies.pluck(:ready).compact
+    cookie_status = cookies.map(&:ready?).uniq.compact
     cookie_status.size == 1 && cookie_status.first
   end
 end
