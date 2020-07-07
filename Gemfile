@@ -48,6 +48,9 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 
+# Sidekiq workers
+gem 'sidekiq'
+
 group :development do
   gem 'selenium-webdriver'
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -76,4 +79,5 @@ group :test do
   gem 'rspec-collection_matchers'
   gem 'rspec_junit_formatter'
   gem 'rails-controller-testing'
+  gem 'rspec-sidekiq'
 end
