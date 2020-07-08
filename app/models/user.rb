@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include HasCookies
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :stored_cookies, class_name: 'Cookie', as: :storage
 
   before_create :setup_first_oven
+
+  alias_method :cookies, :stored_cookies
 
   private
 

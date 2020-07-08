@@ -53,12 +53,13 @@ describe CookiesController do
   end
 
   describe 'POST create' do
-    let(:the_request) { post :create, params: { oven_id: oven.id, cookie: cookie_params } }
-    let(:cookie_params) {
+    let(:the_request) { post :create, params: { oven_id: oven.id}.merge(cookie_params) }
+    let(:cookie_params) do
       {
         fillings: 'Vanilla',
+        cookie_quantity: 1
       }
-    }
+    end
 
     context "when not authenticated" do
       before { sign_in nil }

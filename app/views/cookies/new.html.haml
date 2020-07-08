@@ -3,10 +3,16 @@
 = form_for [@oven, @cookie] do |f|
   .row
     .small-8.columns
-      = f.label :fillings
+      = label_tag :fillings
   .row
     .small-8.columns
-      = f.text_field :fillings
+      = text_field_tag :fillings
+  .row
+    .small-8.columns
+      = label_tag :quantity
+  .row
+    .small-8.columns
+      = number_field_tag :cookie_quantity, in: 0..100, step: 1, default: 1
 
   .row
     .small-8.columns

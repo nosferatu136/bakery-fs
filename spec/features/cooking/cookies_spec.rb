@@ -8,21 +8,22 @@ feature 'Cooking cookies' do
     expect(page).to_not have_content 'Chocolate Chip'
     expect(page).to_not have_content 'Your Cookie is Ready'
 
-    click_link_or_button 'Prepare Cookie'
+    click_link_or_button 'Prepare Cookies'
     fill_in 'Fillings', with: 'Chocolate Chip'
+    fill_in 'cookie_quantity', with: 2
     click_button 'Mix and bake'
 
     expect(current_path).to eq(oven_path(oven))
     expect(page).to have_content 'Chocolate Chip'
     expect(page).to have_content 'Your Cookie is Ready'
 
-    click_button 'Retrieve Cookie'
+    click_button 'Retrieve Cookies'
     expect(page).to_not have_content 'Chocolate Chip'
     expect(page).to_not have_content 'Your Cookie is Ready'
 
     visit root_path
     within '.store-inventory' do
-      expect(page).to have_content '1 Cookie'
+      expect(page).to have_content '2 Cookies'
     end
   end
 
@@ -33,12 +34,14 @@ feature 'Cooking cookies' do
     oven = FactoryGirl.create(:oven, user: user)
     visit oven_path(oven)
 
-    click_link_or_button 'Prepare Cookie'
-    fill_in 'Fillings', with: 'Chocolate Chip'
+    click_link_or_button 'Prepare Cookies'
+    fill_in 'fillings', with: 'Chocolate Chip'
+    fill_in 'cookie_quantity', with: 2
+    # fill_in 'Fillings', with: 'Chocolate Chip'
     click_button 'Mix and bake'
 
-    click_link_or_button  'Prepare Cookie'
-    expect(page).to have_content 'A cookie is already in the oven!'
+    click_link_or_button  'Prepare Cookies'
+    expect(page).to have_content 'Some cookies are already in the oven!'
     expect(current_path).to eq(oven_path(oven))
     expect(page).to_not have_button 'Mix and bake'
   end
@@ -51,11 +54,13 @@ feature 'Cooking cookies' do
     visit oven_path(oven)
 
     3.times do
-      click_link_or_button 'Prepare Cookie'
-      fill_in 'Fillings', with: 'Chocolate Chip'
+      click_link_or_button 'Prepare Cookies'
+      fill_in 'fillings', with: 'Chocolate Chip'
+      fill_in 'cookie_quantity', with: 1
+      # fill_in 'Fillings', with: 'Chocolate Chip'
       click_button 'Mix and bake'
 
-      click_button 'Retrieve Cookie'
+      click_button 'Retrieve Cookies'
     end
 
     visit root_path
