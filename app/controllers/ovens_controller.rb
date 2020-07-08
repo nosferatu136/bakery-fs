@@ -7,6 +7,7 @@ class OvensController < ApplicationController
 
   def show
     @oven = current_user.ovens.find_by!(id: params[:id])
+    @browser = Browser.new(request.env["HTTP_USER_AGENT"])
   end
 
   def empty
