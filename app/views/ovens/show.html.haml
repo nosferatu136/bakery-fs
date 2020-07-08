@@ -7,7 +7,7 @@
     #{pluralize(cookies.count, "Cookie")} with #{fillings || "no fillings"}
   - if @oven.cookies_ready?
     (Your Cookie is Ready)
-    = button_to "Retrieve Cookie", empty_oven_path, class: 'button tiny'
+    = button_to "Retrieve Cookies", empty_oven_path, class: 'button tiny'
 - else
   None
 
